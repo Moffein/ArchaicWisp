@@ -15,7 +15,7 @@ namespace ArchaicWisp
 {
     [BepInDependency("com.bepis.r2api")]
     [BepInDependency("com.Moffein.FixDamageTrailNullref")]
-    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.0.1")]
+    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.0.2")]
     [R2API.Utils.R2APISubmoduleDependency(nameof(DirectorAPI), nameof(LanguageAPI), nameof(PrefabAPI))]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     public class ArchaicWispPlugin : BaseUnityPlugin
