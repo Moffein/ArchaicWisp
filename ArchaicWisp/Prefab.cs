@@ -18,6 +18,35 @@ namespace ArchaicWisp
             LanguageAPI.Add("MOFFEIN_ARCHWISP_BODY_NAME", "Archaic Wisp");
             CreateBody();
             CreateMaster();
+            AddSniperTarget();
+        }
+
+        private static void AddSniperTarget()
+        {
+            ModelLocator ml = ArchaicWispContent.ArchaicWispObject.GetComponent<ModelLocator>();
+            HurtBoxGroup hbg = ml.modelTransform.gameObject.GetComponent<HurtBoxGroup>();
+
+            GameObject transformTarget = hbg.mainHurtBox.transform.gameObject;
+
+            Collider oldCollider = hbg.mainHurtBox.GetComponent<Collider>();
+            UnityEngine.Object.Destroy(hbg.mainHurtBox);
+            UnityEngine.Object.Destroy(oldCollider);
+
+            CapsuleCollider c = transformTarget.AddComponent<CapsuleCollider>();
+            c.height = 3.6f;
+            c.radius = 1f;
+            c.direction = 2;
+
+            HurtBox hb = transformTarget.AddComponent<HurtBox>();
+            hb.isBullseye = true;
+            hb.healthComponent = ArchaicWispContent.ArchaicWispObject.GetComponent<HealthComponent>();
+            hb.damageModifier = HurtBox.DamageModifier.Normal;
+            hb.isSniperTarget = true;
+            hb.hurtBoxGroup = hbg;
+            hb.indexInGroup = 0;
+
+            hbg.mainHurtBox = hb;
+            hbg.hurtBoxes[0] = hb;
         }
 
         private static void CreateMaster()
