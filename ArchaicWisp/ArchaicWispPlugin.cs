@@ -15,7 +15,7 @@ namespace ArchaicWisp
 {
     [BepInDependency("com.bepis.r2api")]
     [BepInDependency("com.Moffein.FixDamageTrailNullref")]
-    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.0.2")]
+    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.0.3")]
     [R2API.Utils.R2APISubmoduleDependency(nameof(DirectorAPI), nameof(LanguageAPI), nameof(PrefabAPI))]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     public class ArchaicWispPlugin : BaseUnityPlugin
@@ -45,8 +45,8 @@ namespace ArchaicWisp
 
         public void ReadConfig()
         {
-            string stages = base.Config.Bind<string>(new ConfigDefinition("Spawns", "Stage List"), "goldshores, dampcavesimple, itdampcave, sulfurpools, skymeadow, wispgraveyard - loop", new ConfigDescription("What stages the monster will show up on. Add a '- loop' after the stagename to make it only spawn after looping. List of stage names can be found at https://github.com/risk-of-thunder/R2Wiki/wiki/List-of-scene-names")).Value;
-            string gwRemoveStages = base.Config.Bind<string>(new ConfigDefinition("Spawns", "Remove Greater Wisps"), "goldshores, dampcavesimple, itdampcave, sulfurpools, skymeadow", new ConfigDescription("Remove Greater Wisps from these stages to prevent role overlap.")).Value;
+            string stages = base.Config.Bind<string>(new ConfigDefinition("Spawns", "Stage List"), "goldshores, dampcavesimple, itdampcave, sulfurpools, skymeadow, itskymeadow, wispgraveyard - loop", new ConfigDescription("What stages the monster will show up on. Add a '- loop' after the stagename to make it only spawn after looping. List of stage names can be found at https://github.com/risk-of-thunder/R2Wiki/wiki/List-of-scene-names")).Value;
+            string gwRemoveStages = base.Config.Bind<string>(new ConfigDefinition("Spawns", "Remove Greater Wisps"), "goldshores, dampcavesimple, itdampcave, sulfurpools, skymeadow, itskymeadow", new ConfigDescription("Remove Greater Wisps from these stages to prevent role overlap.")).Value;
 
             //parse stage
             stages = new string(stages.ToCharArray().Where(c => !System.Char.IsWhiteSpace(c)).ToArray());
@@ -65,7 +65,7 @@ namespace ArchaicWisp
                 StageList.Add(new StageSpawnInfo(name, minStages));
             }
 
-            //parse removeImps
+            //parse removeGW
             gwRemoveStages = new string(gwRemoveStages.ToCharArray().Where(c => !System.Char.IsWhiteSpace(c)).ToArray());
             string[] splitimpRemoveStages = stages.Split(',');
             foreach (string str in splitimpRemoveStages)
@@ -77,7 +77,7 @@ namespace ArchaicWisp
                 SceneDef sd = ScriptableObject.CreateInstance<SceneDef>();
                 sd.baseSceneNameOverride = name;
 
-                DirectorAPI.Helpers.RemoveExistingMonsterFromStage(DirectorAPI.Helpers.MonsterNames.Imp, DirectorAPI.GetStageEnumFromSceneDef(sd), name);
+                DirectorAPI.Helpers.RemoveExistingMonsterFromStage(DirectorAPI.Helpers.MonsterNames.GreaterWisp, DirectorAPI.GetStageEnumFromSceneDef(sd), name);
             }
         }
 
