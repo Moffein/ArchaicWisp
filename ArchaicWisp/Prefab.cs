@@ -66,14 +66,21 @@ namespace ArchaicWisp
             cb.baseRegen = 0f;
             cb.bodyFlags = CharacterBody.BodyFlags.None;
             cb.portraitIcon = ArchaicWispContent.assets.LoadAsset<Texture2D>("icon");
+            cb.baseArmor = 0f;
 
             cb.levelMaxHealth = cb.baseMaxHealth * 0.3f;
             cb.levelDamage = cb.baseDamage * 0.2f;
             cb.levelRegen = cb.baseRegen * 0.2f;
+            cb.levelArmor = 0f;
 
             cb.preferredInitialStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.GreaterWispMonster.SpawnState));
 
             AddSSoH(ArchaicWispContent.ArchaicWispObject);
+
+            DeathRewards dr = ArchaicWispContent.ArchaicWispObject.GetComponent<DeathRewards>();
+            ArchaicWispContent.ArchaicWispLogbookUnlockable = ScriptableObject.CreateInstance<UnlockableDef>();
+            ArchaicWispContent.ArchaicWispLogbookUnlockable.nameToken = "UNLOCKABLE_LOG_MOFFEIN_MOFFEIN_ARCHWISP";
+            dr.logUnlockableDef = ArchaicWispContent.ArchaicWispLogbookUnlockable;
         }
 
         private static void AddSSoH(GameObject enemyObject)

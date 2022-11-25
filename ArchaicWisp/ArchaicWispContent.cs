@@ -5,6 +5,7 @@ using System.Collections;
 using UnityEngine;
 using R2API;
 using System.Collections.Generic;
+using RoR2;
 
 namespace ArchaicWisp
 {
@@ -14,6 +15,7 @@ namespace ArchaicWisp
         public static ContentPack content = new ContentPack();
         public static GameObject ArchaicWispObject;
         public static GameObject ArchaicWispMaster;
+        public static UnlockableDef ArchaicWispLogbookUnlockable;
         //public static DamageAPI.ModdedDamageType ClayGooClayMan;
         public static DirectorAPI.DirectorCardHolder ArchaicWispCard;
         public static DirectorAPI.DirectorCardHolder ArchaicWispLoopCard;
@@ -38,6 +40,7 @@ namespace ArchaicWisp
         {
             content.bodyPrefabs.Add(new GameObject[] { ArchaicWispContent.ArchaicWispObject });
             content.masterPrefabs.Add(new GameObject[] { ArchaicWispContent.ArchaicWispMaster });
+            content.unlockableDefs.Add(new UnlockableDef[] { ArchaicWispContent.ArchaicWispLogbookUnlockable });
             content.projectilePrefabs.Add(projectilePrefabs.ToArray());
             yield break;
         }
