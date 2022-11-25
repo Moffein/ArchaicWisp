@@ -15,7 +15,6 @@ namespace ArchaicWisp
             if (initialized) return;
             initialized = true;
 
-            LanguageAPI.Add("MOFFEIN_ARCHWISP_BODY_NAME", "Archaic Wisp");
             CreateBody();
             CreateMaster();
             AddSniperTarget();

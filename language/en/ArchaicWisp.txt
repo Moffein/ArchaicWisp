@@ -1,0 +1,6 @@
+{
+	strings:
+	{
+	"MOFFEIN_ARCHWISP_BODY_NAME" : "Archaic Wisp"
+	}
+}

@@ -15,14 +15,17 @@ namespace ArchaicWisp
 {
     [BepInDependency("com.bepis.r2api")]
     [BepInDependency("com.Moffein.FixDamageTrailNullref")]
-    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.0.3")]
-    [R2API.Utils.R2APISubmoduleDependency(nameof(DirectorAPI), nameof(LanguageAPI), nameof(PrefabAPI))]
+    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.1.0")]
+    [R2API.Utils.R2APISubmoduleDependency(nameof(DirectorAPI), nameof(PrefabAPI))]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     public class ArchaicWispPlugin : BaseUnityPlugin
     {
+        public static PluginInfo pluginInfo;
         public static List<StageSpawnInfo> StageList = new List<StageSpawnInfo>();
         public void Awake()
         {
+            pluginInfo = Info;
+            new LanguageTokens();
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ArchaicWisp.archwispbundle"))
             {
                 ArchaicWispContent.assets = AssetBundle.LoadFromStream(stream);
@@ -36,6 +39,12 @@ namespace ArchaicWisp
 
             RoR2Application.onLoad += LateSetup;
             ContentManager.collectContentPackProviders += ContentManager_collectContentPackProviders;
+
+            On.EntityStates.GreaterWispMonster.ChargeCannons.OnEnter += (orig, self) =>
+            {
+                orig(self);
+                Debug.Log(self.baseDuration);
+            };
         }
 
         public void LateSetup()

@@ -61,11 +61,22 @@ namespace ArchaicWisp
             ArchaicWispContent.ArchaicWispCard = archWispCard;
             ArchaicWispContent.ArchaicWispLoopCard = archWispLoopCard;
 
+            int categoryIndex = -1;
             DirectorCardCategorySelection dissonanceSpawns = Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/MixEnemy/dccsMixEnemy.asset").WaitForCompletion();
-            dissonanceSpawns.AddCard(1, archWispDC);
-            //0 is Champion
-            //1 is Miniboss
-            //2 is BasicMonsters
+            categoryIndex = FindCategoryIndexByName(dissonanceSpawns, "Minibosses");
+            if (categoryIndex >= 0)
+            {
+                dissonanceSpawns.AddCard(categoryIndex, archWispDC);
+            }
+
+            DirectorCardCategorySelection familySpawns = Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/Common/dccsWispFamily.asset").WaitForCompletion();
+
+            //int categoryIndex = familySpawns.FindCategoryIndexByName("Minibosses"); //THIS FUNCTION DOESN'T WORK IN VANILLA
+            categoryIndex = FindCategoryIndexByName(familySpawns, "Minibosses");
+            if (categoryIndex >= 0)
+            {
+                familySpawns.AddCard(categoryIndex, archWispDC);
+            }
 
             foreach (StageSpawnInfo ssi in ArchaicWispPlugin.StageList)
             {
@@ -76,6 +87,21 @@ namespace ArchaicWisp
 
                 DirectorAPI.Helpers.AddNewMonsterToStage(toAdd, false, DirectorAPI.GetStageEnumFromSceneDef(sd), ssi.GetStageName());
             }
+        }
+
+        //Minibosses
+        //Basic Monsters
+        //Champions
+        public static int FindCategoryIndexByName(DirectorCardCategorySelection dcs, string categoryName)
+        {
+            for (int i = 0; i < dcs.categories.Length; i++)
+            {
+                if (string.CompareOrdinal(dcs.categories[i].name, categoryName) == 0)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

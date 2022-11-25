@@ -39,6 +39,7 @@ namespace ArchaicWisp
             //pie2.lifetime = 2f;   //Don't change this. Fireball visual only lasts for 1s and disappears after. Default = 1
             pie2.falloffModel = BlastAttack.FalloffModel.SweetSpot;
 
+            SneedUtils.SneedUtils.SetEntityStateField("EntityStates.ArchWispMonster.ChargeCannons", "baseDuration", "2");
             SneedUtils.SneedUtils.SetEntityStateField("EntityStates.ArchWispMonster.FireCannons", "damageCoefficient", "3.6");
             SneedUtils.SneedUtils.SetEntityStateField("EntityStates.ArchWispMonster.FireCannons", "projectilePrefab", archWispProjectile);
         }
