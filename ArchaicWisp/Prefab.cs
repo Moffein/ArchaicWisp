@@ -80,6 +80,7 @@ namespace ArchaicWisp
             DeathRewards dr = ArchaicWispContent.ArchaicWispObject.GetComponent<DeathRewards>();
             ArchaicWispContent.ArchaicWispLogbookUnlockable = ScriptableObject.CreateInstance<UnlockableDef>();
             ArchaicWispContent.ArchaicWispLogbookUnlockable.nameToken = "UNLOCKABLE_LOG_MOFFEIN_MOFFEIN_ARCHWISP";
+            ArchaicWispContent.ArchaicWispLogbookUnlockable.cachedName = "MOFFEIN_ARCHWISP_BODY_NAME";
             dr.logUnlockableDef = ArchaicWispContent.ArchaicWispLogbookUnlockable;
         }
 
