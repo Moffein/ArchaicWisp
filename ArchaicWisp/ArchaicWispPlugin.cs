@@ -13,10 +13,10 @@ using System.Reflection;
 
 namespace ArchaicWisp
 {
-    [BepInDependency("com.bepis.r2api")]
-    [BepInDependency("com.Moffein.FixDamageTrailNullref")]
-    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.1.1")]
-    [R2API.Utils.R2APISubmoduleDependency(nameof(DirectorAPI), nameof(PrefabAPI))]
+    [BepInDependency(R2API.R2API.PluginGUID)]
+    [BepInDependency(R2API.PrefabAPI.PluginGUID)]
+    [BepInDependency(R2API.DirectorAPI.PluginGUID)]
+    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.1.2")]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     public class ArchaicWispPlugin : BaseUnityPlugin
     {

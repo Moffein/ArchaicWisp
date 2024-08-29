@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -82,8 +82,17 @@
     <Reference Include="MonoMod.Utils">
       <HintPath>libs\BepInEx\MonoMod.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="R2API">
-      <HintPath>libs\R2API\R2API.dll</HintPath>
+    <Reference Include="R2API.ContentManagement">
+      <HintPath>..\..\ClayMen\ClayMen\libs\R2API\R2API.ContentManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="R2API.Core">
+      <HintPath>..\..\ClayMen\ClayMen\libs\R2API\R2API.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="R2API.Director">
+      <HintPath>..\..\ClayMen\ClayMen\libs\R2API\R2API.Director.dll</HintPath>
+    </Reference>
+    <Reference Include="R2API.Prefab">
+      <HintPath>..\..\ClayMen\ClayMen\libs\R2API\R2API.Prefab.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_CSharp">
       <HintPath>libs\Rewired_CSharp.dll</HintPath>
