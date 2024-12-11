@@ -27,7 +27,7 @@ namespace ArchaicWisp
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/DisplayEliteUrchinCrown.prefab").WaitForCompletion(),
-                            childName = "HealthBarOrigin",
+                            childName = "Mask",
                             localPos = new Vector3(0F, -0.6F, -0.85F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.25F, 0.25F, 0.25F),
@@ -48,7 +48,7 @@ namespace ArchaicWisp
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteHaunted/DisplayEliteStealthCrown.prefab").WaitForCompletion(),
-                            childName = "HealthBarOrigin",
+                            childName = "Mask",
                             localPos = new Vector3(0F, -0.6F, -0.6F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.25F, 0.25F, 0.25F),
@@ -69,7 +69,7 @@ namespace ArchaicWisp
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteIce/DisplayEliteIceCrown.prefab").WaitForCompletion(),
-                            childName = "HealthBarOrigin",
+                            childName = "Mask",
                             localPos = new Vector3(0F, -0.6F, -0.45F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.12F, 0.12F, 0.12F),
@@ -91,7 +91,7 @@ namespace ArchaicWisp
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = olHorn,
-                            childName = "HealthBarOrigin",
+                            childName = "Mask",
                             localPos = new Vector3(0F, -0.7874F, -0.92505F),
                             localAngles = new Vector3(80.00003F, 0F, 0F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
@@ -101,7 +101,7 @@ namespace ArchaicWisp
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = olHorn,
-                            childName = "HealthBarOrigin",
+                            childName = "Mask",
                             localPos = new Vector3(0F, -0.81623F, -1.2465F),
                             localAngles = new Vector3(90F, 0F, 0F),
                             localScale = new Vector3(0.8F, 0.8F, 0.8F),
@@ -123,7 +123,7 @@ namespace ArchaicWisp
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = blazingHorn,
-                            childName = "HealthBarOrigin",
+                            childName = "Mask",
                             localPos = new Vector3(0.7F, -1F, -1.1F),
                             localAngles = new Vector3(0F, 190F, 180F),
                             localScale = new Vector3(0.4F, 0.4F, 0.4F),
@@ -132,7 +132,7 @@ namespace ArchaicWisp
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = blazingHorn,
-                            childName = "HealthBarOrigin",
+                            childName = "Mask",
                             localPos = new Vector3(-0.7F, -1F, -1.1F),
                             localAngles = new Vector3(0F, 170F, 180F),
                             localScale = new Vector3(-0.4F, 0.4F, 0.4F),
@@ -153,7 +153,7 @@ namespace ArchaicWisp
                             {
                                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/DisplayEliteMendingAntlers.prefab").WaitForCompletion(),
-                                childName = "HealthBarOrigin",
+                                childName = "Mask",
                                 localPos = new Vector3(0F, -0.63F, -0.75F),
                                 localAngles = new Vector3(90F, 0F, 0F),
                                 localScale = new Vector3(2.5F, 2.5F, 2.5F),
@@ -179,10 +179,52 @@ localScale = new Vector3(2.5F, 2.5F, 2.5F)*/    //increase 25%
                             {
                                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                                 followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/DisplayAffixVoid.prefab").WaitForCompletion(),
-                                childName = "HealthBarOrigin",
+                                childName = "Mask",
                                 localPos = new Vector3(0F, -0.98165F, -1.88916F),
                                 localAngles = new Vector3(0F, 180F, 180F),
                                 localScale = new Vector3(0.68414f, 0.68414f, 0.68414f),
+                                limbMask = LimbFlags.None
+                            }
+                        }
+                }
+            });
+
+            equipmentList.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            {
+                keyAsset = DLC2Content.Elites.Aurelionite.eliteEquipmentDef,
+                displayRuleGroup = new DisplayRuleGroup
+                {
+                    rules = new ItemDisplayRule[]
+                        {
+                            new ItemDisplayRule
+                            {
+                                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteAurelionite/DisplayEliteAurelioniteEquipment.prefab").WaitForCompletion(),
+                                childName = "Mask",
+                                localPos = new Vector3(0F, -1.45F, -1F),
+                                localAngles = new Vector3(90F, 0F, 0F),
+                                localScale = new Vector3(2F, 2F, 2F),
+                                limbMask = LimbFlags.None
+                            }
+                        }
+                }
+            });
+
+            equipmentList.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            {
+                keyAsset = DLC2Content.Elites.Bead.eliteEquipmentDef,
+                displayRuleGroup = new DisplayRuleGroup
+                {
+                    rules = new ItemDisplayRule[]
+                        {
+                            new ItemDisplayRule
+                            {
+                                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                                followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/Elites/EliteBead/DisplayEliteBeadSpike.prefab").WaitForCompletion(),
+                                childName = "Mask",
+                                localPos = new Vector3(-0.59181F, -0.80641F, -1.02937F),
+                                localAngles = new Vector3(18.04248F, 223.5347F, 251.9449F),
+                                localScale = new Vector3(0.076F, 0.076F, 0.076F),
                                 limbMask = LimbFlags.None
                             }
                         }

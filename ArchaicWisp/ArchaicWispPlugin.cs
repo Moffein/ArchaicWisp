@@ -16,7 +16,7 @@ namespace ArchaicWisp
     [BepInDependency(R2API.R2API.PluginGUID)]
     [BepInDependency(R2API.PrefabAPI.PluginGUID)]
     [BepInDependency(R2API.DirectorAPI.PluginGUID)]
-    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.1.2")]
+    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.1.7")]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     public class ArchaicWispPlugin : BaseUnityPlugin
     {
@@ -54,8 +54,8 @@ namespace ArchaicWisp
 
         public void ReadConfig()
         {
-            string stages = base.Config.Bind<string>(new ConfigDefinition("Spawns", "Stage List"), "goldshores, dampcavesimple, itdampcave, sulfurpools, skymeadow, itskymeadow, wispgraveyard - loop", new ConfigDescription("What stages the monster will show up on. Add a '- loop' after the stagename to make it only spawn after looping. List of stage names can be found at https://github.com/risk-of-thunder/R2Wiki/wiki/List-of-scene-names")).Value;
-            string gwRemoveStages = base.Config.Bind<string>(new ConfigDefinition("Spawns", "Remove Greater Wisps"), "goldshores, dampcavesimple, itdampcave, sulfurpools, skymeadow, itskymeadow", new ConfigDescription("Remove Greater Wisps from these stages to prevent role overlap.")).Value;
+            string stages = base.Config.Bind<string>(new ConfigDefinition("Spawns", "Stage List"), "goldshores, dampcavesimple, itdampcave, sulfurpools, skymeadow, itskymeadow, wispgraveyard - loop, helminthroost, lemuriantemple", new ConfigDescription("What stages the monster will show up on. Add a '- loop' after the stagename to make it only spawn after looping. List of stage names can be found at https://github.com/risk-of-thunder/R2Wiki/wiki/List-of-scene-names")).Value;
+            string gwRemoveStages = base.Config.Bind<string>(new ConfigDefinition("Spawns", "Remove Greater Wisps"), "goldshores, dampcavesimple, itdampcave, sulfurpools, skymeadow, itskymeadow, helminthroost, lemuriantemple", new ConfigDescription("Remove Greater Wisps from these stages to prevent role overlap.")).Value;
 
             //parse stage
             stages = new string(stages.ToCharArray().Where(c => !System.Char.IsWhiteSpace(c)).ToArray());

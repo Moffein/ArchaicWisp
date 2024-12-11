@@ -18,6 +18,9 @@ namespace ArchaicWisp
             GameObject archWispProjectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/ArchWisp/ArchWispCannon.prefab").WaitForCompletion().InstantiateClone("MoffeinArchWispCannon", true);
             ArchaicWispContent.projectilePrefabs.Add(archWispProjectile);
 
+            ProjectileDamage pd = archWispProjectile.GetComponent<ProjectileDamage>();
+            if (pd) pd.damageType.damageSource = DamageSource.Primary;
+
             archWispProjectile.GetComponent<Rigidbody>().useGravity = false;
 
             ProjectileImpactExplosion pie = archWispProjectile.GetComponent<ProjectileImpactExplosion>();

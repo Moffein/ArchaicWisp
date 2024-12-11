@@ -3,6 +3,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using R2API;
+using UnityEngine.ProBuilder.MeshOperations;
 
 namespace ArchaicWisp
 {
@@ -82,6 +83,41 @@ namespace ArchaicWisp
             ArchaicWispContent.ArchaicWispLogbookUnlockable.nameToken = "UNLOCKABLE_LOG_MOFFEIN_MOFFEIN_ARCHWISP";
             ArchaicWispContent.ArchaicWispLogbookUnlockable.cachedName = "MOFFEIN_ARCHWISP_BODY_NAME";
             dr.logUnlockableDef = ArchaicWispContent.ArchaicWispLogbookUnlockable;
+
+            //Fix null Mask Transform
+            ModelLocator ml = cb.GetComponent<ModelLocator>();
+            if (ml)
+            {
+                Transform modelTransform = ml.modelTransform;
+                if (modelTransform)
+                {
+                    ChildLocator.NameTransformPair maskPair;
+                    Transform maskTransform = null;
+                    ChildLocator cl = modelTransform.GetComponent<ChildLocator>();
+                    foreach(var pair in cl.transformPairs)
+                    {
+                        if (pair.name == "Mask" && !pair.transform)
+                        {
+                            maskPair = pair;
+                            var allTransforms = modelTransform.GetComponentsInChildren<Transform>();
+                            foreach (Transform t in allTransforms)
+                            {
+                                if (t.name == "Mask")
+                                {
+                                    maskTransform = t;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+
+                    if (maskTransform)
+                    {
+                        maskPair.transform = maskTransform;
+                    }
+                }
+            }
         }
 
         private static void AddSSoH(GameObject enemyObject)
