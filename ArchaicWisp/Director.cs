@@ -69,7 +69,7 @@ namespace ArchaicWisp
                 dissonanceSpawns.AddCard(categoryIndex, archWispDC);
             }
 
-            DirectorCardCategorySelection familySpawns = Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/Common/dccsWispFamily.asset").WaitForCompletion();
+            DirectorCardCategorySelection familySpawns = Addressables.LoadAssetAsync<DirectorCardCategorySelection>("RoR2/Base/Common/DirectorCardCategorySelections/dccsWispFamily.asset").WaitForCompletion();
 
             //int categoryIndex = familySpawns.FindCategoryIndexByName("Minibosses"); //THIS FUNCTION DOESN'T WORK IN VANILLA
             categoryIndex = FindCategoryIndexByName(familySpawns, "Minibosses");
