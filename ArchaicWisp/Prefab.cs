@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using R2API;
 using UnityEngine.ProBuilder.MeshOperations;
+using System.Collections.Generic;
 
 namespace ArchaicWisp
 {
@@ -59,6 +60,21 @@ namespace ArchaicWisp
         private static void CreateBody()
         {
             ArchaicWispContent.ArchaicWispObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/ArchWisp/ArchWispBody.prefab").WaitForCompletion().InstantiateClone("MoffeinArchWisp", true);
+
+            var soa = ArchaicWispContent.ArchaicWispObject.AddComponent<SpecialObjectAttributes>();
+            soa.grabbable = true;
+            soa.damageTypeOverride = DamageType.IgniteOnHit;
+
+            SphereCollider[] allSpheres = ArchaicWispContent.ArchaicWispObject.GetComponentsInChildren<SphereCollider>();
+            foreach (var sc in allSpheres)
+            {
+                if (sc.gameObject.name == "StandableSurface")
+                {
+                    if (soa.collisionToDisable == null) soa.collisionToDisable = new List<GameObject>();
+                    soa.collisionToDisable.Add(sc.gameObject);
+                    break;
+                }
+            }
 
             CharacterBody cb = ArchaicWispContent.ArchaicWispObject.GetComponent<CharacterBody>();
             cb.baseNameToken = "MOFFEIN_ARCHWISP_BODY_NAME";
