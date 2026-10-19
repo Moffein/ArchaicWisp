@@ -16,7 +16,7 @@ namespace ArchaicWisp
     [BepInDependency(R2API.R2API.PluginGUID)]
     [BepInDependency(R2API.PrefabAPI.PluginGUID)]
     [BepInDependency(R2API.DirectorAPI.PluginGUID)]
-    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.1.9")]
+    [BepInPlugin("com.Moffein.ArchaicWisp", "Archaic Wisp", "1.1.10")]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     public class ArchaicWispPlugin : BaseUnityPlugin
     {
